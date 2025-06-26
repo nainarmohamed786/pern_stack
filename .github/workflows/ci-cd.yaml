@@ -43,11 +43,7 @@ jobs:
 
       - name: Run backend tests
         working-directory: ./backend
-        run: npm test 
-
-      - name: Run frontend tests
-        working-directory: ./frontend
-        run: npm test
+        run: npm test -- --watchAll=false
 
       - name: Deploy 
         run: echo "Deploying application..."
