@@ -34,7 +34,7 @@ jobs:
           node-version: 18
 
       - name: Install backend dependencies
-        working-directory: ./backen
+        working-directory: ./backend
         run: npm install
 
       - name: Install frontend dependencies
