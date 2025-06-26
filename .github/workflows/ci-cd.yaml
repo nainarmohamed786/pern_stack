@@ -1,0 +1,57 @@
+name: pern-stack
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          PGHOST: ep-red-mountain-a8cssj35-pooler.eastus2.azure.neon.tech
+          PGDATABASE: neondb
+          PGUSER: neondb_owner
+          PGPASSWORD: npg_6PlMRdLh3qmw
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U neondb_owner"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Repo clone
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install backend dependencies
+        working-directory: ./backen
+        run: npm install
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Run backend tests
+        working-directory: ./backend
+        run: npm test 
+
+      - name: Run frontend tests
+        working-directory: ./frontend
+        run: npm test
+
+      - name: Deploy 
+        run: echo "Deploying application..."
+
+
+
+
