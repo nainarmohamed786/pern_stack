@@ -12,10 +12,10 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          PGHOST: ep-red-mountain-a8cssj35-pooler.eastus2.azure.neon.tech
-          PGDATABASE: neondb
-          PGUSER: neondb_owner
-          PGPASSWORD: npg_6PlMRdLh3qmw
+          # PGHOST: ep-red-mountain-a8cssj35-pooler.eastus2.azure.neon.tech
+          POSTGRES_DB: neondb
+          POSTGRES_USER: neondb_owner
+          POSTGRES_PASSWORD: npg_6PlMRdLh3qmw
         ports:
           - 5432:5432
         options: >-
