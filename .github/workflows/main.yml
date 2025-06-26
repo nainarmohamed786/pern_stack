@@ -1,0 +1,10 @@
+name: pernstack
+on: push
+
+jobs: 
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print hello worls
+      run: echo "hello world"
